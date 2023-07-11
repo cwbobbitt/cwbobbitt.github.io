@@ -42,7 +42,7 @@ This workflow can also be used for Public Software Items hosted by Addigy and ca
 For the main variables, we have the Software Name, Icon ID, and Icon MD5 that are used.
 
 - **software_name**: Name of the item you are installing that will be displayed to the user
-- **icon_id**: If you would like to set the Dialog icon to the same Self Service app icon that you have uploaded to your Smart Software item, provide the Addigy ID of the icon file. Otherwise, it will default to the Mac Manage icon. 340x340px perferred.
+- **icon_id**: If you would like to set the Dialog icon to the same Self Service app icon that you have uploaded to your Smart Software item, provide the Addigy ID of the icon file. Otherwise, it will default to the Mac Manage icon. 340x340px preferred.
 - **icon_md5**: Expected md5 value of icon in file manager. Leave blank if not using custom icon file.
 
 {% highlight shell %}
