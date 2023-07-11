@@ -250,7 +250,7 @@ addigyFileManager="https://file-manager-prod.addigy.com/file/"
 dialogBinary="/usr/local/bin/dialog"
 commandFile=$(mktemp /var/tmp/Dialog.XXXXXX)
 errorCommandFile=$(mktemp /var/tmp/error-Dialog.XXXXXX)
-logFile=$(mktemp /var/tmp/${software_name}_log.XXXXXX)
+logFile=$(mktemp "/var/tmp/${software_name}_log.XXXXXX")
 icon="${addigyPath}Icon.png"
 
 ### METHODS ###
