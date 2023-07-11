@@ -130,9 +130,9 @@ Prerequisites:
 
 I've put together a fairly simple script that will present you with the option to search File Manager or the Public Software Catalog. 
 
-For scenario 1 described earlier, use the File Manager option to search for your pkg file to get your App ID and then use it to search for the image you'll be using for your icon to get your Icon ID.
+For scenario 1 described earlier, use the File Manager option to search for your file ids and then use it to search for the image you'll be using for your icon to get your Icon ID. You'll also be provided with the MD5 hash and who within your organization uploaded the file.
 
-For scenario 2, use the Public Software option to search for the app you'd like to use. If a corresponding app is found, you'll be presented with the Name, App ID, Icon ID, and Org ID. Keep in mind that Addigy hosted items will have an org id of b152eb8d-4b4b-11e5-8081-bd44aaafc9a6. Any other org ids are items hosted by other organizations.
+For scenario 2, use the Public Software option to search for the app you'd like to use. If a corresponding app is found, you'll be presented with the Name, File ID, File Hash, Icon ID, Icon Hash, and Org ID. Keep in mind that Addigy hosted items will have an org id of b152eb8d-4b4b-11e5-8081-bd44aaafc9a6. Any other org ids are items hosted by other organizations.
 
 {% highlight shell %}
 fileManagerSearch(){
@@ -149,7 +149,7 @@ files=$(curl -s -X POST "https://api.addigy.com/api/v2/oa/files/query" \
 -d "{\"search_term\":\"${fileName}\",\"per_page\":10,\"page\":1,\"sort_field\":\"created\",\"sort_direction\":\"desc\"}" )
 
 echo "The following file(s) were found:"
-echo $files | jq '.items[] | {ID: .id , File_Name: .filename, File_Uploader: .user_email, Date_Created: .created}'
+echo $files | jq '. | { File_Name: .filename, Date_Created: .created, User: .user_email, ID: .id, MD5: .md5_hash}'
 prompt
 }
 
@@ -164,7 +164,7 @@ publicSoftwareSearch(){
 	read softwareName
 
 	software=$(printf "%s" $request | jq . | jq -c '.[] | select( .name | contains("'${softwareName}'"))')
-	printf "%s" $software | jq '. | {Name: .name, Org: .orgid , App_ID: .downloads[].id, Icon_ID: (.software_icon | .id)}'
+	printf "%s" $software | jq '. | {Name: .name, Org: .orgid , App_ID: .downloads[].id, App_MD5: .downloads[].md5_hash, Icon_ID: (.software_icon | .id), Icon_MD5: (.software_icon | .md5_hash)}'
 	prompt
 }
 
