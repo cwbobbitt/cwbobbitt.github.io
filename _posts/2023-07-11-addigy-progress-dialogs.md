@@ -374,7 +374,7 @@ function process_pkg(){
             [[ $char == % ]] && keep=1 ;
             [[ $char =~ [0-9] ]] && [[ $keep == 1 ]] && progress="$progress$char" ;
             [[ $char == . ]] && [[ $keep == 1 ]] && echo "progresstext: ${progress}%" >> ${commandFile} && echo "progress: ${progress}" >> ${commandFile} && progress="" && keep=0 ;
-        done
+        done || true
 
     echo "message: Install Complete" >> ${commandFile}
 
