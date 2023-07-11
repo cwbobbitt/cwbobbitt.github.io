@@ -1,5 +1,5 @@
 ---
-title: Progess Dialogs within Addigy Self Service
+title: Progress Dialogs within Addigy Self Service
 date: 2023-07-11 11:00:00 -0500
 categories: [addigy, swiftdialog]
 tags: [addigy, swiftdialog]
