@@ -201,7 +201,9 @@ I redacted the IDs and emails from the File Manager Search section of the record
 
 ## Putting It All Together
 
-Once you've collected and compiled all the relevant information, we can put it all together within a Smart Software item. Make sure to name your custom software item the same as your software_name variable so it can all execute within the same directory. At this point, all you'll need to do is paste the code below (along with your specific variables) in the "installation command" section of your custom software item. 
+Once you've collected and compiled all the relevant information, we can put it all together within a Smart Software item. Make sure to name your custom software item the same as your software_name variable so it can all execute within the same directory. Additionally, don't forget that the versioning will add the version number to the end of the software name for it's directory. For example, a software item with the name "Zoom" and version 1.0 will need to be named "Zoom (1.0)" in your configuration below.
+
+At this point, all you'll need to do is paste the code below (along with your specific variables) in the "installation command" section of your custom software item. 
 
 Don't forget to upload your Self Service icon as well so it is displayed within MacManage itself!
 
@@ -234,7 +236,7 @@ configJSON='
             "install_type": "",
             "md5": "",
             "arguments": ""
-
+        }
     ]
 }
 '
