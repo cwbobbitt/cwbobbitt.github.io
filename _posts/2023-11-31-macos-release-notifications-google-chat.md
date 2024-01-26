@@ -7,7 +7,7 @@ tags: [macos, software updates, google chat, google workspace]
 
 ## Introduction
 
-Those reading this post may already be receiving notifications about Apple Releases through the Apple securityannounce mailing list or Apple Developer RSS feed. Maybe you're the only member of your team receiving these notifications and you want to easily keep the rest of your team up to date on these releases. This was exactly my scenario, but I originally struggled to find a solution as I didn't want to require my colleagues to comb through the securityannouce emails of non macOS updates and I couldn't find an already existing Google Chat integration for the Apple Developer RSS feed. With all this in mind, I set off to discover how I could automate notifications for macOS updates being released through a Google Chat alert.
+Those reading this post may already be receiving notifications about Apple Releases through the Apple securityannounce mailing list or Apple Developer RSS feed. Maybe you're the only member of your team receiving these notifications and you want to easily keep the rest of your team up to date on these releases. This was exactly my scenario, but I originally struggled to find a solution as I didn't want to require my colleagues to comb through the securityannouce emails of non macOS updates and I couldn't find an already existing Google Chat integration for the Apple Developer RSS feed that I could modify to only show public releases. With all this in mind, I set off to discover how I could automate notifications for macOS updates being released through a Google Chat alert.
 
 ## End Result
 
@@ -259,5 +259,9 @@ The gcloud commands above reflect the user-managed replication policy change, so
 ## Closing Thoughts
 
 Is this a lot just to achieve notifications for macOS releases? Probably. Does it get the job done? Yes. Currently, this is just going to tell you general release information, but I hope to expand it in the future to also include what devices support the update.
+
+If you don't want to go the route of implementing something like this in GCP, there are a few good write ups on how you could implement the equivalent with Apps Script and use the https://developer.apple.com/news/releases/rss/releases.rss feed with a few modifications.
+- [https://github.com/thmslprt/hangouts-chat-rss-bot](https://github.com/thmslprt/hangouts-chat-rss-bot) 
+- [https://techupover.medium.com/rss-notifications-in-google-chat-rooms-via-appscript-google-sheets-1f036e8b3279](https://techupover.medium.com/rss-notifications-in-google-chat-rooms-via-appscript-google-sheets-1f036e8b3279)
 
 If you have any questions or suggestions, feel free to shoot me a message over on the <a href="https://macadmins.slack.com/team/U011JUC8SLE" target="_blank">MacAdmins Slack</a>.
