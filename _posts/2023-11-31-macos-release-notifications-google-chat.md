@@ -26,7 +26,7 @@ To start off, here's what the end result will look like once everything has been
 - [Google Chat Webhook URL](https://developers.google.com/chat/how-tos/webhooks#register_the_incoming_webhook)
 
 ## What's Happening?
-I wanted to learn more on containers and container deployment, so I decided to go the route of using Artifact Registry and Cloud Run. The Cloud Run job is scheduled to run every 6 hours to parse the known updates listed at [https://gdmf.apple.com/v2/pmv](https://gdmf.apple.com/v2/pmv). After the first initial run to populate data to your BigQuery table, if an update is found that doesn't exist in the BigQuery table, the table is updated and a wehbook call is made to send a chat notification. 
+I wanted to learn more on containers and container deployment, so I decided to go the route of using Artifact Registry and Cloud Run. The Cloud Run job is scheduled to run every 6 hours to parse the known updates listed at [https://gdmf.apple.com/v2/pmv](https://gdmf.apple.com/v2/pmv). After the first initial run to populate data to your BigQuery table, if an update is found that doesn't exist in the BigQuery table, the table is updated and a wehbook call is made to send a chat notification. If up to 6 hours seems too long to know of when an update is released, you can adjust this in the GCP gcloud commands below.
 
 It's worth noting that upon first run, you will receive a chat notification for each previous macOS release in a single thread. So prepare yourself!
 
@@ -235,7 +235,7 @@ gcloud builds submit --region=$region --tag "${region}-docker.pkg.dev/${project_
 #Create Cloud Run Job
 gcloud run jobs create get-macos-updates --image "${region}-docker.pkg.dev/${project_id}/updates-repo/get-macos-updates-image:tag1" --service-account="macos-detector-service@${project_id}.iam.gserviceaccount.com" --region=$region
 
-#Schedule Cloud Run Job to run on specified interval. Every 6 hours used below, see  <> for more information
+#Schedule Cloud Run Job to run on specified interval. Every 6 hours used below, see https://man7.org/linux/man-pages/man5/crontab.5.html for more information
 gcloud scheduler jobs create http get-macos-updates-scheduler \
   --location=$region \
   --schedule="0 */6 * * *" \
