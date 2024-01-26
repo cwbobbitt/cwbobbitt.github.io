@@ -1,6 +1,6 @@
 ---
 title: macOS Update Release Notifications in Google Chat
-date: 2024-01-22 11:00:00 -0500
+date: 2024-01-26 04:00:00 -0500
 categories: [macos, google workspace ]
 tags: [macos, software updates, google chat, google workspace]
 ---
